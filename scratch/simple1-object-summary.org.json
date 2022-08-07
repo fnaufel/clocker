@@ -1,0 +1,87 @@
+[
+    "org-data",
+    null,
+    [
+        "headline",
+        {
+            "raw-value": "[#10] First",
+            "title": [
+                "[#10] First"
+            ],
+        },
+        [
+            "section", {},
+            [
+                "drawer",
+                {
+                    "drawer-name": "LOGBOOK",
+                },
+                [
+                    "clock", {}
+                ],
+                [
+                    "plain-list", {}, []
+                ]
+            ]
+        ],
+        [
+            "headline",
+            {
+                "raw-value": "[0/3] First, first child",
+                "level": 2,
+                "title": [
+                    [
+                        "statistics-cookie",
+                        {
+                            "value": "[0/3]",
+                            "parent": "none"
+                        }
+                    ],
+                    "First, first child"
+                ],
+            },
+            [
+                "section", {}, []
+            ]
+        ],
+        [
+            "headline",
+            {
+                "raw-value": "First, second child",
+                "level": 2,
+                "title": [
+                    "First, second child"
+                ],
+            },
+            [
+                "section", {},
+                [
+                    "drawer",
+                    {
+                        "drawer-name": "LOGBOOK",
+                    },
+                    [
+                        "clock", {}
+                    ]
+                ],
+                [
+                    "paragraph", {},
+                    "    A table\n"
+                ],
+                [
+                    "table", {}, [], [], [], [], []
+                ]
+            ]
+        ]
+    ],
+    [
+        "headline",
+        {
+            "raw-value": "Second",
+            "level": 1,
+            "title": [
+                "Second"
+            ],
+        }
+    ]
+]

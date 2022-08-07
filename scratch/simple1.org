@@ -1,0 +1,31 @@
+
+* STARTED [#10] First                                   :python:ubuntu:emacs:
+  :LOGBOOK:
+  CLOCK: [2022-04-02 Sat 15:38]--[2022-04-02 Sat 15:39] =>  0:01
+  - State "STARTED"    from              [2022-04-02 Sat 15:38]
+  :END:
+
+*** [#A] [0/3] First, first child
+
+    + [ ] A list 1
+
+    + [ ] A list 2
+
+    + [ ] A list 3
+
+*** First, second child
+    :LOGBOOK:
+    CLOCK: [2022-04-02 Sat 15:39]--[2022-04-02 Sat 16:12] =>  0:33
+    :END:
+    
+    A table
+    
+    | col 1 | col2 |
+    |-------+------|
+    | a     | ab   |
+    | b     | abc  |
+    |-------+------|
+
+* Second
+
+  
