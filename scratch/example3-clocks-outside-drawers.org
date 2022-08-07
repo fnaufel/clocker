@@ -1,9 +1,6 @@
 
 * STARTED [#10] First                                   :python:ubuntu:emacs:
-  :LOGBOOK:
-  CLOCK: [2022-04-02 Sat 15:38]--[2022-04-02 Sat 15:39] =>  0:01
-  - State "STARTED"    from              [2022-04-02 Sat 15:38]
-  :END:
+  CLOCK: [2022-08-07 Sun 16:48]--[2022-08-07 Sun 16:48] =>  0:00
 
 *** [#A] [0/3] First, first child
 
@@ -14,9 +11,7 @@
     + [ ] A list 3
 
 *** First, second child
-    :LOGBOOK:
-    CLOCK: [2022-04-02 Sat 15:39]--[2022-04-02 Sat 16:12] =>  0:33
-    :END:
+    CLOCK: [2022-08-07 Sun 16:49]--[2022-08-07 Sun 16:49] =>  0:00
     
     A table
     
@@ -31,9 +26,7 @@
 * Third
   
 ***************************** This is an inline task
-  :LOGBOOK:
-  CLOCK: [2022-04-03 Sun 16:26]--[2022-04-03 Sun 16:27] =>  0:01
-  :END:
+  CLOCK: [2022-08-07 Sun 16:49]--[2022-08-07 Sun 16:49] =>  0:00
 ***************************** END
 
 

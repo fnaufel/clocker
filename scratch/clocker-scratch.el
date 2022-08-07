@@ -204,3 +204,135 @@ Information is returned in a plist with properties
           :end 180 
           :post-blank 1))
   :parent 2)
+
+
+;;;  ____                 _ _       
+;;; |  _ \ ___  ___ _   _| | |_ ___ 
+;;; | |_) / _ \/ __| | | | | __/ __|
+;;; |  _ <  __/\__ \ |_| | | |_\__ \
+;;; |_| \_\___||___/\__,_|_|\__|___/
+                                
+ (:filename
+  "/home/fnaufel/Development/00-Present/clocker/scratch/example1.org"
+  :clocks
+  ((
+    :year-start 2022 
+    :month-start 4 
+    :day-start 2 
+    :hour-start 15 
+    :minute-start 38 
+    :year-end 2022 
+    :month-end 4 
+    :day-end 2 
+    :hour-end 15 
+    :minute-end 39 
+    :parent-heading 2)
+   (
+    :year-start 2022 
+    :month-start 4 
+    :day-start 2 
+    :hour-start 15 
+    :minute-start 39 
+    :year-end 2022 
+    :month-end 4 
+    :day-end 2 
+    :hour-end 16 
+    :minute-end 12 
+    :parent-heading 357)
+   (
+    :year-start 2022 
+    :month-start 4 
+    :day-start 3 
+    :hour-start 16 
+    :minute-start 26 
+    :year-end 2022 
+    :month-end 4 
+    :day-end 3 
+    :hour-end 16 
+    :minute-end 27 
+    :parent-heading 621))
+  
+  :headings nil)
+
+;;;;;;
+
+ (
+  :filename "/home/fnaufel/Development/00-Present/clocker/scratch/example1.org" 
+  :clocks
+  ((
+    :year-start 2022 
+    :month-start 4 
+    :day-start 2 
+    :hour-start 15 
+    :minute-start 38 
+    :year-end 2022 
+    :month-end 4 
+    :day-end 2 
+    :hour-end 15 
+    :minute-end 39 
+    :parent-heading 2)
+   (
+    :year-start 2022 
+    :month-start 4 
+    :day-start 2 
+    :hour-start 15 
+    :minute-start 39 
+    :year-end 2022 
+    :month-end 4 
+    :day-end 2 
+    :hour-end 16 
+    :minute-end 12 
+    :parent-heading 357)
+   (
+    :year-start 2022 
+    :month-start 4 
+    :day-start 3 
+    :hour-start 16 
+    :minute-start 26 
+    :year-end 2022 
+    :month-end 4 
+    :day-end 3 
+    :hour-end 16 
+    :minute-end 27 
+    :parent-heading 621))
+  
+  :headings
+  ((
+    :begin 2 
+    :name "[#10] First" 
+    :category "example1" 
+    :tags
+    ("python" "ubuntu" "emacs")
+    
+    :parent-heading nil)
+   (
+    :begin 262 
+    :name "[0/3] First, first child" 
+    :category "example1" 
+    :tags nil 
+    :parent-heading 2)
+   (
+    :begin 357 
+    :name "First, second child" 
+    :category "example1" 
+    :tags nil 
+    :parent-heading 2)
+   (
+    :begin 600 
+    :name "Second" 
+    :category "example1" 
+    :tags nil 
+    :parent-heading nil)
+   (
+    :begin 610 
+    :name "Third" 
+    :category "example1" 
+    :tags nil 
+    :parent-heading nil)
+   (
+    :begin 621 
+    :name "This is an inline task" 
+    :category "example1" 
+    :tags nil 
+    :parent-heading 621)))
+
