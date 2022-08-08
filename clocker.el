@@ -108,7 +108,19 @@ Information is returned in a plist with properties
 "
 
   (let* ((begin (org-element-property :begin hd))
-         (name (org-element-property :raw-value hd))
+         (name-raw (org-element-property :raw-value hd))
+         (priority (org-element-property :statistic-cookie hd))
+         (name-no-priority
+          (replace-regexp-in-string
+           "\\[#\\(\\([0-9]+\\)\\|\\([A-Z]+\\)\\)\\] ?"
+           ""
+           name-raw))
+         (name-no-statistic-cookie
+          (replace-regexp-in-string
+           "\\[\\(\\([0-9]+%\\)\\|\\([0-9]+/[0-9]+\\)\\|\\(/\\)\\)\\] ?"
+           ""
+           name-no-priority))
+         (name name-no-statistic-cookie)
          
          ;; If I use org-element-property to get the tags and the
          ;; categories, inherited stuff does not appear. Hence, the
@@ -123,7 +135,9 @@ Information is returned in a plist with properties
 
          (parent-heading-elm (org-element-lineage hd (list 'headline) nil))
          (parent-heading (org-element-property :begin parent-heading-elm)))
-         
+
+    (print priority)
+    
     (list 
      :begin begin
      :name name
