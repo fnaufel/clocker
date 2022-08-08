@@ -18,6 +18,8 @@
       (unless (derived-mode-p 'org-mode)
         (error "Agenda file %s is not in Org mode" file))
 
+      (org-refresh-category-properties)
+
       (let* ((ast (org-element-parse-buffer))
              (filename (buffer-file-name))
              (clocks (org-element-map
@@ -65,7 +67,9 @@ Information is returned in a plist with properties
         (drawer (org-element-property :parent clock))
         (section (org-element-property :parent drawer))
         (heading (org-element-property :parent section))
-        (parent-heading (org-element-property :begin heading)))
+        (parent-heading-elm
+         (org-element-lineage clock (list 'headline 'inlinetask) nil))
+        (parent-heading (org-element-property :begin parent-heading-elm)))
 
     (when (string= status "closed")
 
@@ -103,26 +107,27 @@ Information is returned in a plist with properties
 + :parent-heading (beginning position of parent heading)
 "
 
-;;; TODO: org-element-lineage does not work for inline tasks. Why?
-;;; Inlinetasks are reported to have themselves as parents!
-  
   (let* ((begin (org-element-property :begin hd))
          (name (org-element-property :raw-value hd))
-         (category (org-get-category))
-         (tags-contents (org-element-property :tags hd))
-         (tags 
-          (progn
-            (mapc
-             (lambda (s) (set-text-properties 0 (length s) nil s))
-             tags-contents)
-            tags-contents))
-         (parent-heading
-          (org-element-property :begin (car (org-element-lineage hd)))))
+         
+         ;; If I use org-element-property to get the tags and the
+         ;; categories, inherited stuff does not appear. Hence, the
+         ;; following code is ugly and inefficient, as it goes around
+         ;; the buffer to find the headline and get the properties.
+         (tags (progn
+                 (goto-char begin)
+                 (setq raw (cdar (org-entry-properties (point) "ALLTAGS")))
+                 (set-text-properties 0 (length raw) nil raw)
+                 raw))
+         (category (cdar (org-entry-properties (point) "CATEGORY")))
 
+         (parent-heading-elm (org-element-lineage hd (list 'headline) nil))
+         (parent-heading (org-element-property :begin parent-heading-elm)))
+         
     (list 
      :begin begin
      :name name
-     :category category
      :tags tags
+     :category category
      :parent-heading parent-heading)))
      

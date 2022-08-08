@@ -336,3 +336,115 @@ Information is returned in a plist with properties
     :tags nil 
     :parent-heading 621)))
 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+ (headline (
+            :raw-value "[#10] First" 
+            :begin 24 
+            :end 590 
+            :pre-blank 0 
+            :contents-begin 102 
+            :contents-end 589 
+            :level 1 
+            :priority nil 
+            :tags (
+                   #("python"
+                     0 1
+                     (org-category
+                      "buffercat"
+                      display #(" p" 1 2 (cursor t))
+                      keymap
+                      (keymap (follow-link . mouse-face)
+                              (mouse-3 . org-find-file-at-mouse)
+                              (mouse-2 . org-open-at-mouse))
+                      mouse-face highlight face org-modern-tag fontified t)
+                     1 5
+                     (org-category "buffercat" keymap (keymap (follow-link . mouse-face) (mouse-3 . org-find-file-at-mouse) (mouse-2 . org-open-at-mouse)) mouse-face highlight face org-modern-tag fontified t) 5 6 (org-category "buffercat" display "n " keymap (keymap (follow-link . mouse-face) (mouse-3 . org-find-file-at-mouse) (mouse-2 . org-open-at-mouse)) mouse-face highlight face org-modern-tag fontified t)) #("ubuntu" 0 1 (org-category "buffercat" display #(" u" 1 2 (cursor t)) keymap (keymap (follow-link . mouse-face) (mouse-3 . org-find-file-at-mouse) (mouse-2 . org-open-at-mouse)) mouse-face highlight face org-modern-tag fontified t) 1 5 (org-category "buffercat" keymap (keymap (follow-link . mouse-face) (mouse-3 . org-find-file-at-mouse) (mouse-2 . org-open-at-mouse)) mouse-face highlight face org-modern-tag fontified t) 5 6 (org-category "buffercat" display "u " keymap (keymap (follow-link . mouse-face) (mouse-3 . org-find-file-at-mouse) (mouse-2 . org-open-at-mouse)) mouse-face highlight face org-modern-tag fontified t)) #("emacs" 0 1 (org-category "buffercat" display #(" e" 1 2 (cursor t)) keymap (keymap (follow-link . mouse-face) (mouse-3 . org-find-file-at-mouse) (mouse-2 . org-open-at-mouse)) mouse-face highlight face org-modern-tag fontified t) 1 4 (org-category "buffercat" keymap (keymap (follow-link . mouse-face) (mouse-3 . org-find-file-at-mouse) (mouse-2 . org-open-at-mouse)) mouse-face highlight face org-modern-tag fontified t) 4 5 (org-category "buffercat" display "s " keymap (keymap (follow-link . mouse-face) (mouse-3 . org-find-file-at-mouse) (mouse-2 . org-open-at-mouse)) mouse-face highlight face org-modern-tag fontified t))) 
+            :todo-keyword #("STARTED" 0 7 (fontified t face (org-todo org-level-1) org-category "buffercat")) 
+            :todo-type todo 
+            :post-blank 1 
+            :footnote-section-p nil 
+            :archivedp nil 
+            :commentedp nil 
+            :post-affiliated 24 
+            :title "[#10] First"))
+
+
+ 
+ ;;;;;
+
+
+ (#("python"
+    0 1
+    (org-category "buffercat" display
+                  #(" p" 1 2
+                    (cursor t))
+                  keymap
+                  (keymap
+                   (follow-link . mouse-face)
+                   (mouse-3 . org-find-file-at-mouse)
+                   (mouse-2 . org-open-at-mouse))
+                  mouse-face highlight face org-modern-tag fontified t)
+    1 5
+    (org-category "buffercat" keymap
+                  (keymap
+                   (follow-link . mouse-face)
+                   (mouse-3 . org-find-file-at-mouse)
+                   (mouse-2 . org-open-at-mouse))
+                  mouse-face highlight face org-modern-tag fontified t)
+    5 6
+    (org-category "buffercat" display "n " keymap
+                  (keymap
+                   (follow-link . mouse-face)
+                   (mouse-3 . org-find-file-at-mouse)
+                   (mouse-2 . org-open-at-mouse))
+                  mouse-face highlight face org-modern-tag fontified t))
+  #("ubuntu" 0 1
+    (org-category "buffercat" display
+                  #(" u" 1 2
+                    (cursor t))
+                  keymap
+                  (keymap
+                   (follow-link . mouse-face)
+                   (mouse-3 . org-find-file-at-mouse)
+                   (mouse-2 . org-open-at-mouse))
+                  mouse-face highlight face org-modern-tag fontified t)
+    1 5
+    (org-category "buffercat" keymap
+                  (keymap
+                   (follow-link . mouse-face)
+                   (mouse-3 . org-find-file-at-mouse)
+                   (mouse-2 . org-open-at-mouse))
+                  mouse-face highlight face org-modern-tag fontified t)
+    5 6
+    (org-category "buffercat" display "u " keymap
+                  (keymap
+                   (follow-link . mouse-face)
+                   (mouse-3 . org-find-file-at-mouse)
+                   (mouse-2 . org-open-at-mouse))
+                  mouse-face highlight face org-modern-tag fontified t))
+  #("emacs" 0 1
+    (org-category "buffercat" display
+                  #(" e" 1 2
+                    (cursor t))
+                  keymap
+                  (keymap
+                   (follow-link . mouse-face)
+                   (mouse-3 . org-find-file-at-mouse)
+                   (mouse-2 . org-open-at-mouse))
+                  mouse-face highlight face org-modern-tag fontified t)
+    1 4
+    (org-category "buffercat" keymap
+                  (keymap
+                   (follow-link . mouse-face)
+                   (mouse-3 . org-find-file-at-mouse)
+                   (mouse-2 . org-open-at-mouse))
+                  mouse-face highlight face org-modern-tag fontified t)
+    4 5
+    (org-category "buffercat" display "s " keymap
+                  (keymap
+                   (follow-link . mouse-face)
+                   (mouse-3 . org-find-file-at-mouse)
+                   (mouse-2 . org-open-at-mouse))
+                  mouse-face highlight face org-modern-tag fontified t)))

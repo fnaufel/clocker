@@ -1,3 +1,4 @@
+#+CATEGORY: buffercat
 
 * STARTED [#10] First                                   :python:ubuntu:emacs:
   :LOGBOOK:
@@ -27,6 +28,12 @@
     |-------+------|
 
 * Second
+  :PROPERTIES:
+  :CATEGORY: my category
+  :END:
+  :LOGBOOK:
+  - State "TODO"       from              [2022-08-08 Mon 13:22]
+  :END:
 
 * Third
   
