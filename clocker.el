@@ -9,7 +9,7 @@
 ;;; |__/                 
 
 (defun clocker-json (&optional filename)
-  ""
+  "Write json file with all the info."
 
   (interactive "FOutput file: ")
 
@@ -17,12 +17,9 @@
 
   (let* ((files-info (clocker-do-agenda-files))
          (main-array (json-encode files-info)))
-         ;; (dicts (mapcar 'clocker-convert-one files-info))
-         ;; (main-array (concat "["
-         ;;                     (string-join dicts ",")
-         ;;                     "]")))
-
-  (write-region main-array nil filename)))
+    
+    (write-region main-array nil filename)
+    t))
 
   
 ;;;       _            _                  _ _     _   
@@ -61,6 +58,7 @@
   (while (setq file (pop files))
 	(catch 'nextfile
 	  (org-check-agenda-file file)
+      (message (concat "Processing " file "..."))
       (push (clocker-do-file file) retval)))
 
   retval)
