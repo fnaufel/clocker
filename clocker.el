@@ -16,28 +16,15 @@
   (setq filename (or filename "clocker.json"))
 
   (let* ((files-info (clocker-do-agenda-files))
-         (dicts (mapcar 'clocker-convert-one files-info))
-         (main-array (concat "["
-                             (string-join dicts ",")
-                             "]")))
+         (main-array (json-encode files-info)))
+         ;; (dicts (mapcar 'clocker-convert-one files-info))
+         ;; (main-array (concat "["
+         ;;                     (string-join dicts ",")
+         ;;                     "]")))
 
   (write-region main-array nil filename)))
 
-
-;;;                                _                      
-;;;   ___ ___  _ ____   _____ _ __| |_    ___  _ __   ___ 
-;;;  / __/ _ \| '_ \ \ / / _ \ '__| __|  / _ \| '_ \ / _ \
-;;; | (_| (_) | | | \ V /  __/ |  | |_  | (_) | | | |  __/
-;;;  \___\___/|_| |_|\_/ \___|_|   \__|  \___/|_| |_|\___|
-
-(defun clocker-convert-one (one-plist)
-  ""
-
-  (let* ((filename get)))
-
-  )
-
-
+  
 ;;;       _            _                  _ _     _   
 ;;;   ___| | ___   ___| | _____ _ __     | (_)___| |_ 
 ;;;  / __| |/ _ \ / __| |/ / _ \ '__|____| | / __| __|
@@ -111,9 +98,10 @@
                            '(headline inlinetask)
                          #'clocker-get-heading-info)))
 
-        (list :filename filename
-              :clocks clocks
-              :headings headings)))))
+        `(
+         ("filename" . ,filename)
+         ("clocks" . ,clocks)
+         ("headings" . ,headings))))))
 
 ;;;             _          _            _    
 ;;;   __ _  ___| |_    ___| | ___   ___| | __
@@ -126,20 +114,6 @@
   "Get clock information about CLOSED clock CLOCK.
 
 If CLOCK is not closed, ignore it.
-
-Information is returned in a plist with properties
-
-+ :year-start
-+ :month-start
-+ :day-start
-+ :hour-start
-+ :minute-start
-+ :year-end
-+ :month-end
-+ :day-end
-+ :hour-end
-+ :minute-end
-+ :parent-heading (beginning position of parent heading)
 "
 
   (let* ((value (org-element-property :value clock))
@@ -155,18 +129,18 @@ Information is returned in a plist with properties
 
       (setq timestamp (cadr value))
       
-      (list
-       :year-start (plist-get timestamp :year-start)
-       :month-start (plist-get timestamp :month-start)
-       :day-start (plist-get timestamp :day-start)
-       :hour-start (plist-get timestamp :hour-start)
-       :minute-start (plist-get timestamp :minute-start)
-       :year-end (plist-get timestamp :year-end)
-       :month-end (plist-get timestamp :month-end)
-       :day-end (plist-get timestamp :day-end)
-       :hour-end (plist-get timestamp :hour-end)
-       :minute-end (plist-get timestamp :minute-end)
-       :parent-heading parent-heading))))
+      `(
+       ("year-start" . ,(plist-get timestamp :year-start))
+       ("month-start" . ,(plist-get timestamp :month-start))
+       ("day-start" . ,(plist-get timestamp :day-start))
+       ("hour-start" . ,(plist-get timestamp :hour-start))
+       ("minute-start" . ,(plist-get timestamp :minute-start))
+       ("year-end" . ,(plist-get timestamp :year-end))
+       ("month-end" . ,(plist-get timestamp :month-end))
+       ("day-end" . ,(plist-get timestamp :day-end))
+       ("hour-end" . ,(plist-get timestamp :hour-end))
+       ("minute-end" . ,(plist-get timestamp :minute-end))
+       ("parent-heading" . ,parent-heading)))))
 
 ;;;             _     _                    _ _             
 ;;;   __ _  ___| |_  | |__   ___  __ _  __| (_)_ __   __ _ 
@@ -176,16 +150,7 @@ Information is returned in a plist with properties
 ;;;  |___/                                           |___/ 
 
 (defun clocker-get-heading-info (hd)
-  "Get information about heading or inlinetask HD.
-
-Information is returned in a plist with properties
-
-+ :begin
-+ :name
-+ :category
-+ :tags
-+ :parent-heading (beginning position of parent heading)
-"
+  "Get information about heading or inlinetask HD."
 
   (let* ((begin (org-element-property :begin hd))
          (name-raw (org-element-property :raw-value hd))
@@ -214,14 +179,17 @@ Information is returned in a plist with properties
          (category (cdar (org-entry-properties (point) "CATEGORY")))
 
          (parent-heading-elm (org-element-lineage hd (list 'headline) nil))
-         (parent-heading (org-element-property :begin parent-heading-elm)))
-
-    ;; (print priority)
+         (parent-heading (org-element-property :begin parent-heading-elm))
+         (retval `(
+                   ("begin" . ,begin)
+                   ("name" . ,name)
+                   ("category" . ,category))))
     
-    (list 
-     :begin begin
-     :name name
-     :tags tags
-     :category category
-     :parent-heading parent-heading)))
+    (when tags
+      (push `("tags" . ,tags) retval))
+
+    (when parent-heading
+      (push `("parent-heading" . ,parent-heading) retval))
+
+    retval))
      
