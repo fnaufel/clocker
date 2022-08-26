@@ -1,4 +1,84 @@
 
+(require 'json)
+
+;;;    _                 
+;;;   (_)___  ___  _ __  
+;;;   | / __|/ _ \| '_ \ 
+;;;   | \__ \ (_) | | | |
+;;;  _/ |___/\___/|_| |_|
+;;; |__/                 
+
+(defun clocker-json (&optional filename)
+  ""
+
+  (interactive "FOutput file: ")
+
+  (setq filename (or filename "clocker.json"))
+
+  (let* ((files-info (clocker-do-agenda-files))
+         (dicts (mapcar 'clocker-convert-one files-info))
+         (main-array (concat "["
+                             (string-join dicts ",")
+                             "]")))
+
+  (write-region main-array nil filename)))
+
+
+;;;                                _                      
+;;;   ___ ___  _ ____   _____ _ __| |_    ___  _ __   ___ 
+;;;  / __/ _ \| '_ \ \ / / _ \ '__| __|  / _ \| '_ \ / _ \
+;;; | (_| (_) | | | \ V /  __/ |  | |_  | (_) | | | |  __/
+;;;  \___\___/|_| |_|\_/ \___|_|   \__|  \___/|_| |_|\___|
+
+(defun clocker-convert-one (one-plist)
+  ""
+
+  (let* ((filename get)))
+
+  )
+
+
+;;;       _            _                  _ _     _   
+;;;   ___| | ___   ___| | _____ _ __     | (_)___| |_ 
+;;;  / __| |/ _ \ / __| |/ / _ \ '__|____| | / __| __|
+;;; | (__| | (_) | (__|   <  __/ | |_____| | \__ \ |_ 
+;;;  \___|_|\___/ \___|_|\_\___|_|       |_|_|___/\__|
+                                                  
+(defun clocker-list ()
+  "Gather info on agenda files and create a buffer with the results (a list)."
+  
+  (interactive)
+
+  (let ((table (clocker-do-agenda-files))
+        (buff (generate-new-buffer "*clocker*"))
+        (temp-buffer-window-setup-hook '(emacs-lisp-mode)))
+
+    (with-temp-buffer-window buff nil nil
+                             (pp (clocker-do-agenda-files))
+                             t)))
+
+
+;;;      _                                    _          __ _ _           
+;;;   __| | ___     __ _  __ _  ___ _ __   __| | __ _   / _(_) | ___  ___ 
+;;;  / _` |/ _ \   / _` |/ _` |/ _ \ '_ \ / _` |/ _` | | |_| | |/ _ \/ __|
+;;; | (_| | (_) | | (_| | (_| |  __/ | | | (_| | (_| | |  _| | |  __/\__ \
+;;;  \__,_|\___/   \__,_|\__, |\___|_| |_|\__,_|\__,_| |_| |_|_|\___||___/
+;;;                      |___/                                            
+
+(defun clocker-do-agenda-files ()
+  "Process all agenda files."
+
+  (setq files (org-agenda-files nil 'ifmode)
+        retval nil)
+  
+  (while (setq file (pop files))
+	(catch 'nextfile
+	  (org-check-agenda-file file)
+      (push (clocker-do-file file) retval)))
+
+  retval)
+
+
 ;;;      _              __ _ _      
 ;;;   __| | ___        / _(_) | ___ 
 ;;;  / _` |/ _ \ _____| |_| | |/ _ \
@@ -6,7 +86,7 @@
 ;;;  \__,_|\___/      |_| |_|_|\___|
                               
 (defun clocker-do-file (file)
-  ""
+  "Gather all clocks and all headings from one file."
 
   (let* ((org-startup-folded nil)
          (org-startup-align-all-tables nil)
@@ -19,7 +99,7 @@
         (error "Agenda file %s is not in Org mode" file))
 
       (org-refresh-category-properties)
-
+      
       (let* ((ast (org-element-parse-buffer))
              (filename (buffer-file-name))
              (clocks (org-element-map
@@ -136,7 +216,7 @@ Information is returned in a plist with properties
          (parent-heading-elm (org-element-lineage hd (list 'headline) nil))
          (parent-heading (org-element-property :begin parent-heading-elm)))
 
-    (print priority)
+    ;; (print priority)
     
     (list 
      :begin begin

@@ -447,4 +447,44 @@ Information is returned in a plist with properties
                    (follow-link . mouse-face)
                    (mouse-3 . org-find-file-at-mouse)
                    (mouse-2 . org-open-at-mouse))
-                  mouse-face highlight face org-modern-tag fontified t)))
+                  mouse-face highlight face org-modern-tag fontified t))))
+
+
+;;;  _            _       
+;;; | |_ ___  ___| |_ ___ 
+;;; | __/ _ \/ __| __/ __|
+;;; | ||  __/\__ \ |_\__ \
+;;;  \__\___||___/\__|___/
+                      
+(defun test-json ()
+  ""
+
+  (interactive)
+
+  (let ((org-agenda-files
+         '(
+           "/home/fnaufel/Development/00-Present/clocker/scratch/example1.org"
+           "/home/fnaufel/Development/00-Present/clocker/scratch/example3-clocks-outside-drawers.org"
+           )))
+    (clocker-json)))
+
+(test-json)
+
+
+(defun test-list ()
+  ""
+
+  (interactive)
+
+  (let ((org-agenda-files
+         '(
+           "/home/fnaufel/Development/00-Present/clocker/scratch/example1.org"
+           "/home/fnaufel/Development/00-Present/clocker/scratch/example3-clocks-outside-drawers.org"
+           )))
+    (clocker-list)))
+
+(test-list)
+
+
+
+
