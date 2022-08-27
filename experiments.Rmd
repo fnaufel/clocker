@@ -1,0 +1,92 @@
+---
+title: 'Clocker'
+author: 'fnaufel'
+email: 'https://fnaufel.github.io/'
+date: '   (v. `r format(Sys.Date(), "%d/%m/%Y")`)'
+lang: 'en'
+
+output: 
+  # To install these output formats, run
+  #   install.packages("devtools")
+  #   devtools::install_github("fnaufel/fnaufelRmd")
+  fnaufelRmd::html_report:
+    []
+---
+
+```{r setup, include=FALSE}
+# The next command configures MANY things and loads quite a few packages.
+# 
+# If you want to see what's being done, execute 
+# 
+#   cat(
+#     system.file(
+#       "rmarkdown/resources/R/_common_report.R", 
+#       package = "fnaufelRmd"
+#     )
+#   )
+# 
+# to find out the location of the file. Then open the file.
+# 
+# If you want to change the configuration, copy the file, edit it, and
+# source it instead of the package file. 
+# 
+# Or simply write your commands here in this code chunk.
+
+source(
+  system.file(
+    "rmarkdown/resources/R/_common_report.R",
+    package = "fnaufelRmd"
+  )
+)
+```
+
+
+# Read json file
+
+```{r}
+library(jsonlite)
+```
+
+```{r}
+df <- fromJSON('scratch/clocker.json')
+```
+
+```{r}
+df %>% glimpse()
+```
+
+# Unnest headlines
+
+```{r}
+python_headlines <- df %>% 
+  select(-clocks) %>% 
+  slice(9) %>% 
+  unnest(headings)
+```
+
+```{r}
+python_headlines %>% glimpse()
+```
+
+```{r}
+python_headlines %>% select(-filename)
+```
+
+
+# Unnest clocks
+
+```{r}
+python_clocks <- df %>% 
+  select(-headings) %>% 
+  slice(9) %>% 
+  unnest(clocks)
+```
+
+```{r}
+python_clocks %>% glimpse()
+```
+
+```{r}
+python_clocks %>% select(-filename)
+```
+

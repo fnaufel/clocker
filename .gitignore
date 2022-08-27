@@ -2,3 +2,8 @@
 /lib/
 /scratch/clocker.json
 /scratch/example.el
+.Rproj.user
+clocker.Rproj
+experiments.html
+html_files
+pdf_files
