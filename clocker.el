@@ -128,17 +128,17 @@ If CLOCK is not closed, ignore it.
       (setq timestamp (cadr value))
       
       `(
-       ("year-start" . ,(plist-get timestamp :year-start))
-       ("month-start" . ,(plist-get timestamp :month-start))
-       ("day-start" . ,(plist-get timestamp :day-start))
-       ("hour-start" . ,(plist-get timestamp :hour-start))
-       ("minute-start" . ,(plist-get timestamp :minute-start))
-       ("year-end" . ,(plist-get timestamp :year-end))
-       ("month-end" . ,(plist-get timestamp :month-end))
-       ("day-end" . ,(plist-get timestamp :day-end))
-       ("hour-end" . ,(plist-get timestamp :hour-end))
-       ("minute-end" . ,(plist-get timestamp :minute-end))
-       ("parent-heading" . ,parent-heading)))))
+       ("year_start" . ,(plist-get timestamp :year-start))
+       ("month_start" . ,(plist-get timestamp :month-start))
+       ("day_start" . ,(plist-get timestamp :day-start))
+       ("hour_start" . ,(plist-get timestamp :hour-start))
+       ("minute_start" . ,(plist-get timestamp :minute-start))
+       ("year_end" . ,(plist-get timestamp :year-end))
+       ("month_end" . ,(plist-get timestamp :month-end))
+       ("day_end" . ,(plist-get timestamp :day-end))
+       ("hour_end" . ,(plist-get timestamp :hour-end))
+       ("minute_end" . ,(plist-get timestamp :minute-end))
+       ("parent_heading" . ,parent-heading)))))
 
 ;;;             _     _                    _ _             
 ;;;   __ _  ___| |_  | |__   ___  __ _  __| (_)_ __   __ _ 
@@ -187,7 +187,7 @@ If CLOCK is not closed, ignore it.
       (push `("tags" . ,tags) retval))
 
     (when parent-heading
-      (push `("parent-heading" . ,parent-heading) retval))
+      (push `("parent_heading" . ,parent-heading) retval))
 
     retval))
      
